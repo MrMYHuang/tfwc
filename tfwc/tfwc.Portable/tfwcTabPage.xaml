@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:tfwc.Portable;assembly=tfwc.Portable"
+             x:Class="tfwc.Portable.tfwcTabPage"
+             Title="免費站">
+    <StackLayout>
+        <ListView x:Name="fclv" ItemsSource="{x:Static local:tfwcTabPage.fcList}" VerticalOptions="FillAndExpand" RowHeight="120" ItemTapped="fclv_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame OutlineColor="Accent">
+                        <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Station}" Margin="0" FontSize="Medium" VerticalOptions="StartAndExpand" />
+                                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                                    <Label Text="{Binding Dist}" Margin="0"  FontSize="Medium"  VerticalOptions="StartAndExpand" />
+                                    <Label Text="公尺 (直線距離)" Margin="0"  FontSize="Medium"  VerticalOptions="StartAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="定位" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" />
+            <Button x:Name="resSwitch" Text="免費充電" Clicked="resSwitch_Clicked" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

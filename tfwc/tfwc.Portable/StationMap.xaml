@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tfwc.Portable.StationMap"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Title="地圖" Appearing="ContentPage_Appearing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <maps:Map 
+      Grid.ColumnSpan="2"
+      Grid.Row="1"
+      x:Name="MyMap"
+      IsShowingUser="False"
+      MapType="Street"/>
+        <StackLayout Grid.Row="3"
+                 Grid.ColumnSpan="2"
+                 Orientation="Horizontal" 
+                 Spacing="10"
+                 Padding="10"
+                 HorizontalOptions="Center">
+            <Button x:Name="ButtonStreet" Text="街道" Clicked="OnStreetClicked"/>
+            <Button x:Name="ButtonHybrid" Text="混合" Clicked="OnHybridClicked"/>
+            <Button x:Name="ButtonSatellite" Text="衛星" Clicked="OnSatelliteClicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

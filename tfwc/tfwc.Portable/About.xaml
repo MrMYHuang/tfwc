@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="tfwc.Portable.About"
+             Title="關於">
+    <StackLayout Orientation="Vertical">
+        <Label>版本更新：
+        1.0.2：
+        * 調整地圖設定，試圖解決耗電問題。
+
+        1.0.1：
+        * 更新logo。
+        * 移除地圖頁Slider。
+
+        1.0.0：
+        * 第一版。
+        </Label>
+        <Label>版權宣告：
+        * 開放資料-中央行政機關室內公共區域免費手機充電站查詢服務：http://data.gov.tw/node/28592        
+        * 開放資料-iTaiwan中央行政機關室內公共區域免費無線上網熱點查詢服務：http://data.gov.tw/node/5962
+        * 台灣logo來源：Taiwan - Single Color by FreeVectorMaps.com</Label>
+    </StackLayout>
+</ContentPage>

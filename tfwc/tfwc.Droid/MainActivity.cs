@@ -9,15 +9,15 @@ using Android.OS;
 
 namespace tfwc.Droid
 {
-	[Activity (Label = "tfwc", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "Taiwan Free WiFi & Charging", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
 			global::Xamarin.Forms.Forms.Init (this, bundle);
-			LoadApplication (new tfwc.App ());
+            Xamarin.FormsMaps.Init(this, bundle);
+            LoadApplication (new tfwc.App ());
 		}
 	}
 }

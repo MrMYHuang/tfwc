@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Xamarin.Forms;
 
 namespace tfwc
@@ -13,7 +12,7 @@ namespace tfwc
 		{
 			InitializeComponent();
 
-			MainPage = new tfwc.MainPage();
+			MainPage = new tfwc.Portable.tfwcTabbedPage();
 		}
 
 		protected override void OnStart ()
