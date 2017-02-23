@@ -132,11 +132,15 @@
       <Project>{57fbb0a2-1804-49cf-b08b-fc2d25f076b0}</Project>
       <Name>Xamarin.FormsBook.Platform.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\tfwc\tfwc.csproj">
-      <Project>{7C864BE4-01F2-4751-A573-E6637C9B80BA}</Project>
-      <Name>tfwc</Name>
+    <ProjectReference Include="..\tfwc.Portable\tfwc.Portable.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>tfwc.Portable</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="..\tfwc\tfwc.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

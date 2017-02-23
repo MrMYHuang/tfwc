@@ -18,6 +18,7 @@ Global
 		tfwc\tfwc\tfwc.projitems*{188a047e-ffce-4702-8b15-3a7ca6f29650}*SharedItemsImports = 13
 		tfwc\tfwc\tfwc.projitems*{22dffd88-88e0-4c8f-a5e9-e19a56d62661}*SharedItemsImports = 4
 		tfwc\tfwc\tfwc.projitems*{f8d32c5d-f0c5-4aa8-a588-655bcea4ac70}*SharedItemsImports = 4
+		tfwc\tfwc\tfwc.projitems*{fcd94d37-6795-472e-8031-e7dd317892d1}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
