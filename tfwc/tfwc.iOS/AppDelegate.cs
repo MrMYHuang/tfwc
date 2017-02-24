@@ -23,7 +23,8 @@ namespace tfwc.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init ();
-			LoadApplication (new tfwc.App ());
+            Xamarin.FormsMaps.Init();
+            LoadApplication (new tfwc.App ());
 
 			return base.FinishedLaunching (app, options);
 		}

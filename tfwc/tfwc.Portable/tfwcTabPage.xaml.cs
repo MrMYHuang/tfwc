@@ -62,6 +62,7 @@ namespace tfwc.Portable
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
                 return null;
             }
         }
