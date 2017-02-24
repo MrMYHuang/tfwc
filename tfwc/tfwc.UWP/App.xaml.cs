@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Reflection;
+using Xamarin.Forms.Maps.UWP;
 
 namespace tfwc.UWP
 {
@@ -58,7 +60,16 @@ namespace tfwc.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                // you'll need to add `using System.Reflection;`
+                List<Assembly> assembliesToInclude = new List<Assembly>();
+
+                //Now, add in all the assemblies your app uses
+                assembliesToInclude.Add(typeof(Xamarin.Forms.Maps.UWP.MapRenderer).GetTypeInfo().Assembly);
+
+                //Also do this for all your other 3rd party libraries
+
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+                // replaces Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

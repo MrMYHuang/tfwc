@@ -129,6 +129,7 @@ namespace tfwc.Portable
             var parent = Parent as tfwcTabbedPage;
             var lv = sender as ListView;
             parent.selFcr = lv.SelectedItem as FreeChargingRec;
+            MessagingCenter.Send<tfwcTabPage>(this, "updateMapIcons");
             parent.CurrentPage = parent.Children[1];
         }
 

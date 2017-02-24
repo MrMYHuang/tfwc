@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,11 @@ namespace tfwc.Portable
         Geocoder geoCoder;
         public StationMap()
         {
-
             InitializeComponent();
             geoCoder = new Geocoder();
+            MessagingCenter.Subscribe<tfwcTabPage>(this, "updateMapIcons", (sender) => {
+                updateMapIcons();
+            });
         }
 
         /*
@@ -71,7 +74,7 @@ namespace tfwc.Portable
         }
         */
 
-        private void ContentPage_Appearing(object sender, EventArgs e)
+        void updateMapIcons()
         {
             MyMap.Pins.Clear();
             var parent = this.Parent as tfwcTabbedPage;
