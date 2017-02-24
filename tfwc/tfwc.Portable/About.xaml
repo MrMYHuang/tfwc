@@ -5,6 +5,9 @@
              Title="關於">
     <StackLayout Orientation="Vertical">
         <Label>版本更新：
+        1.0.4：
+        * [Android] 修正Android 6.0以上定位問題。
+
         1.0.3：
         * [UWP] 解決地圖無法顯示的問題。
         * [UWP] 解決"列表/選擇站台/地圖"來回切換，地圖標示未更新的問題。
@@ -18,6 +21,7 @@
 
         1.0.0：
         * 第一版。
+
         </Label>
         <Label>版權宣告：
         * 開放資料-中央行政機關室內公共區域免費手機充電站查詢服務：http://data.gov.tw/node/28592        
