@@ -41,19 +41,34 @@ namespace tfwc.Portable
         {
             try
             {
+                // Read CSV from Assets.
                 var fileHelper = new FileHelper();
-                var csvr = new CsvReader(await fileHelper.ReadTextAsync(csvFile));
-                var fcFullListOrig = csvr.GetRecords<FreeChargingRec>().ToList();
+                var sr = await fileHelper.ReadTextAsync(csvFile);
+
                 var fcFullList = new List<FreeStation2>();
-                foreach (var fcr in fcFullListOrig)
+                // CSV header.
+                var h = sr.ReadLine();
+                // CSV record.
+                string r;
+                while ((r = sr.ReadLine()) != null)
                 {
+                    var strs = r.Replace("\",\"", "\t").Replace("\"", "").Split('\t');
+                    if (strs.Count() != 6)
+                    {
+                        strs = r.Split(',');
+                    }
+
+                    for (var i = 0; i < strs.Count(); i++)
+                    {
+                        strs[i] = strs[i];
+                    }
                     fcFullList.Add(new FreeStation2
                     {
-                        Lat = fcr.Lat,
-                        Lon = fcr.Lon,
-                        Addr = fcr.Addr,
-                        Unit = fcr.Unit,
-                        Station = fcr.Station,
+                        Unit = strs[0],
+                        Station = strs[2],
+                        Addr = strs[3],
+                        Lat = double.Parse(strs[4]),
+                        Lon = double.Parse(strs[5]),
                         Dist = 0,
                     });
                 }

@@ -5,6 +5,9 @@
              Title="關於">
     <StackLayout Orientation="Vertical">
         <Label>版本更新：
+        1.0.5：
+        * [iOS] 改寫CSV讀檔以解決CsvHelpler在iOS的問題。 
+
         1.0.4：
         * [Android] 修正Android 6.0以上定位問題。
 
