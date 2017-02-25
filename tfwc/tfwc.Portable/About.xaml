@@ -5,6 +5,9 @@
              Title="關於">
     <StackLayout Orientation="Vertical">
         <Label>版本更新：
+        1.0.6：
+        * [Android] 改善"列表/選擇站台/地圖"來回切換，無法再選擇站台的問題。 
+
         1.0.5：
         * [iOS] 改寫CSV讀檔以解決CsvHelpler在iOS的問題。 
 

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:tfwc.Portable;assembly=tfwc.Portable"
-             x:Class="tfwc.Portable.tfwcTabPage"
+             x:Class="tfwc.Portable.tfwcTabPage" Appearing="ContentPage_Appearing"
              Title="免費站">
     <StackLayout>
         <ListView x:Name="fclv" ItemsSource="{x:Static local:tfwcTabPage.fcList}" VerticalOptions="FillAndExpand" RowHeight="120" ItemTapped="fclv_ItemTapped">

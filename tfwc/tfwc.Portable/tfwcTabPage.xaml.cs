@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using CsvHelper;
 using System.IO;
 using System.Collections.ObjectModel;
 using Plugin.Geolocator;
@@ -145,6 +144,7 @@ namespace tfwc.Portable
             var parent = Parent as tfwcTabbedPage;
             var lv = sender as ListView;
             parent.selFcr = lv.SelectedItem as FreeChargingRec;
+            lv.SelectedItem = null;
             MessagingCenter.Send<tfwcTabPage>(this, "updateMapIcons");
             parent.CurrentPage = parent.Children[1];
         }
@@ -163,6 +163,11 @@ namespace tfwc.Portable
                 fFullList = fwrFullList;
                 resSwitch.Text = "免費WiFi";
             }
+            refreshFreeList();
+        }
+
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
             refreshFreeList();
         }
     }
