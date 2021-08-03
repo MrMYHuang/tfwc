@@ -1,0 +1,112 @@
+{
+  "name": "tfwc",
+  "homepage": "/tfwc",
+  "productName": "Taiwan Animal Adoption",
+  "pwaVersion": "2.0.0",
+  "version": "2.0.0",
+  "license": "MIT",
+  "keywords": [
+    "動物認養",
+    "台灣"
+  ],
+  "description": "隨機呈現台灣待認養動物資訊",
+  "repository": "https://github.com/MrMYHuang/taa",
+  "author": {
+    "name": "Meng-Yuan Huang",
+    "email": "myh@live.com"
+  },
+  "private": false,
+  "files": [
+    "README.md"
+  ],
+  "main": "buildElectron/main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build && powershell -file CopyBuild.ps1",
+    "build_linux": "react-app-rewired build && ./CopyBuild.sh",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "build-electron": "tsc -b tsconfigElectron.json",
+    "build-electron-store": "tsc -b tsconfigElectron.json && mv buildElectron/mainStore.js buildElectron/main.js",
+    "start-electron": "npm run build-electron && electron .",
+    "dist-snap": "npm run build-electron-store && rm -f dist/*.snap && electron-builder -l snap -c electronBuilderConfigs/snap.json -c.extraMetadata.name=twaa",
+    "publish-snap": "snapcraft upload --release=stable dist/*.snap",
+    "icons-mas": "cd buildElectron && iconutil -c icns icon.iconset",
+    "dist-mas": "npm run build-electron-store && electron-builder -m mas -c electronBuilderConfigs/mas.json",
+    "dist-mas-dev": "npm run build-electron-store && electron-builder -m mas-dev -c electronBuilderConfigs/masDev.json"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.5",
+    "axios": "^0.21.1",
+    "csv-parse": "^4.16.0",
+    "electron-window-state": "^5.0.3",
+    "node-downloader-helper": "^1.0.18",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "16.2.0"
+  },
+  "devDependencies": {
+    "@ionic/react": "^5.6.12",
+    "@ionic/react-router": "^5.6.12",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/adm-zip": "^0.4.34",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.16",
+    "@types/qrcode": "^1.4.1",
+    "@types/react": "^16.14.11",
+    "@types/react-dom": "^16.9.14",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/uuid": "^8.3.1",
+    "customize-cra": "^1.0.0",
+    "electron": "^11.4.10",
+    "electron-builder": "^22.11.7",
+    "electron-builder-notarize-pkg": "^1.2.0",
+    "history": "^4.10.1",
+    "ionicons": "^5.5.2",
+    "memfs": "^3.2.0",
+    "qrcode": "^1.4.4",
+    "query-string": "^6.14.1",
+    "react": "^17.0.2",
+    "react-app-rewired": "^2.1.7",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.1.0",
+    "typescript": "^4.3.5",
+    "uuid": "^8.3.1",
+    "workbox-background-sync": "^5.1.3",
+    "workbox-broadcast-update": "^5.1.3",
+    "workbox-cacheable-response": "^5.1.3",
+    "workbox-core": "^5.1.3",
+    "workbox-expiration": "^5.1.3",
+    "workbox-google-analytics": "^5.1.3",
+    "workbox-navigation-preload": "^5.1.3",
+    "workbox-precaching": "^5.1.3",
+    "workbox-range-requests": "^5.1.3",
+    "workbox-routing": "^5.1.3",
+    "workbox-strategies": "^5.1.3",
+    "workbox-streams": "^5.1.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

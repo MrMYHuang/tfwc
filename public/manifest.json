@@ -1,0 +1,34 @@
+{
+  "short_name": "免費WiFi與充電",
+  "name": "免費WiFi與充電",
+  "icons": [
+    {
+      "src": "assets/icon/icon.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "assets/icon/icon.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "maskable"
+    }
+  ],
+  "scope": "/tfwc/",
+  "start_url": "/tfwc/",
+  "shortcuts": [
+    {
+      "name": "免費充電",
+      "url": "/tfwc/charging",
+      "icons": [{ "src": "assets/icon/icon.png", "sizes": "1024x1024" }]
+    },
+    {
+      "name": "免費 WiFi",
+      "url": "/tfwc/wifi",
+      "icons": [{ "src": "assets/icon/icon.png", "sizes": "1024x1024" }]
+    }
+  ],
+  "display": "standalone",
+  "theme_color": "black",
+  "background_color": "black"
+}
