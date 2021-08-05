@@ -44,6 +44,7 @@ class WebViewController: UIViewController {
         
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         
         let websiteDataTypes = NSSet(array: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache])
@@ -109,7 +110,7 @@ extension WebViewController: WKNavigationDelegate {
             if let url = navigationAction.request.url {
                 if url.absoluteString.contains(jsonUriPrefix) {
                     if let dataStr = url.absoluteString.replacingOccurrences(of: jsonUriPrefix, with: "").removingPercentEncoding {
-                        saveText(text: dataStr, file: "Settings.json")
+                        saveText(text: dataStr, file: "TfwcSettings.json")
                         decisionHandler(.cancel)
                         return
                     }
@@ -122,5 +123,14 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         decisionHandler(.allow)
+    }
+}
+
+extension WebViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let url = navigationAction.request.url {
+            UIApplication.shared.open(url)
+        }
+        return nil
     }
 }
