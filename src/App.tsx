@@ -386,7 +386,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
           cssClass='uiFont'
           isOpen={this.state.showGetPositionAlert}
           backdropDismiss={false}
-          header={'需要您的位置作導航至免費充電站與 WiFi 熱點。按下關閉後，會跳出位置權限存取，請允許此 app 存取您的位置。'}
+          header={'需要您的位置作導航至免費充電站或 WiFi 熱點。按下關閉後，會跳出位置權限存取，請允許此 app 存取您的位置。'}
           buttons={[
             {
               text: '關閉',
