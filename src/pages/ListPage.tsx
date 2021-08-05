@@ -7,6 +7,7 @@ import { FreeChargingItem } from '../models/FreeChargingItem';
 import { FreeWifiItem } from '../models/FreeWifiItem';
 import { Settings } from '../models/Settings';
 import { TmpSettings } from '../models/TmpSettings';
+import './ListPage.css';
 
 interface Props {
   dispatch: Function;
@@ -122,9 +123,18 @@ class _ListPage extends React.Component<PageProps, State> {
             this.setState({ showConfrimOpenMapAlert: true });
           }}>
           <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
-          <IonLabel className='ion-text-wrap uiFont' key={`bookmarkItemLabel_` + index}>
-            {this.mode !== 'wifi' ? (item as FreeChargingItem).充電站名稱 : (item as FreeWifiItem).熱點名稱}
-          </IonLabel>
+          <div className='listItem'>
+            <div>
+              <IonLabel className='ion-text-wrap uiFont' key={`bookmarkItemLabel_` + index}>
+                {this.mode !== 'wifi' ? (item as FreeChargingItem).充電站名稱 : (item as FreeWifiItem).熱點名稱}
+              </IonLabel>
+            </div>
+            <div>
+              <IonLabel className='ion-text-wrap uiFontX0_7'>
+                {item.地址}
+              </IonLabel>
+            </div>
+          </div>
         </IonItem>
       );
     });
