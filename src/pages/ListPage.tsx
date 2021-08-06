@@ -2,12 +2,13 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonToolbar, withIonLifeCycle, IonButton, IonIcon, IonList, IonItem, IonLabel, IonLoading, IonToast, IonTitle, IonInfiniteScroll, IonInfiniteScrollContent, IonAlert } from '@ionic/react';
 import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { shareSocial } from 'ionicons/icons';
+import { shareSocial, location } from 'ionicons/icons';
 import { FreeChargingItem } from '../models/FreeChargingItem';
 import { FreeWifiItem } from '../models/FreeWifiItem';
 import { Settings } from '../models/Settings';
 import { TmpSettings } from '../models/TmpSettings';
 import './ListPage.css';
+import Globals from '../Globals';
 
 interface Props {
   dispatch: Function;
@@ -141,12 +142,39 @@ class _ListPage extends React.Component<PageProps, State> {
     return rows;
   }
 
+  async getCurrentPositionAndSortData() {
+    this.props.dispatch({
+      type: "TMP_SET_KEY_VAL",
+      key: 'isLoadingData',
+      val: true,
+    });
+
+    await Globals.getCurrentPositionAndSortData(
+      this.props.dispatch,
+      this.props.tmpSettings.freeChargingItems,
+      this.props.tmpSettings.freeWifiItems
+    );
+
+    this.props.dispatch({
+      type: "TMP_SET_KEY_VAL",
+      key: 'isLoadingData',
+      val: false,
+    });
+  }
+
   render() {
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonTitle className='uiFont'>免費{this.mode !== 'wifi' ? '充電' : ' WiFi'}</IonTitle>
+
+            <IonButton fill="clear" slot='end' onClick={async e => {
+              await this.getCurrentPositionAndSortData()
+              this.fetchData(true);
+            }}>
+              <IonIcon icon={location} slot='icon-only' />
+            </IonButton>
 
             <IonButton fill="clear" slot='end' onClick={e => {
               this.props.dispatch({

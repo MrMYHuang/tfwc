@@ -6,9 +6,9 @@
 
 ## 說明
 
-台灣免費 WiFi & 充電 (Taiwan Free WiFi & Charging)，簡寫tfwc，使用台灣政府開放資料，支援以下功能
+台灣免費 WiFi & 充電 (Taiwan Free WiFi & Charging)，簡寫tfwc，使用台灣政府免費充電站或 WiFi 熱點開放資料，支援以下功能
 
-* 定位免費充電或 WiFi 列表
+* 定位免費充電站或 WiFi 熱點
   1. 授權您的裝置位置給此 app 後，app 會列出與您位置最近的免費充電站或 WiFi (iTaiwan) 熱點。
   2. 可開啟地圖作導航。
 
@@ -81,6 +81,9 @@ https://myhpwa.github.io/tfwc
 1. iOS Safari 13.4以上才支援"分享此頁"功能。
 
 ## <a id='history'>版本歷史</a>
+* 2.1.0:
+  * 新增重新定位鈕。
+
 * 2.0.0:
   * 改寫成 PWA。
 

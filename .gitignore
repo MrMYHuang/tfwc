@@ -262,3 +262,7 @@ __pycache__/
 
 build
 pwa
+buildElectron/*.js
+buildElectron/*.map
+*.xcbkptlist
+*.xcuserdatad

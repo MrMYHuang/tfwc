@@ -1,16 +1,17 @@
 {
   "name": "tfwc",
   "homepage": "/tfwc",
-  "productName": "Taiwan Animal Adoption",
-  "pwaVersion": "2.0.0",
+  "productName": "免費WiFi與充電",
+  "pwaVersion": "2.1.0",
   "version": "2.0.0",
   "license": "MIT",
   "keywords": [
-    "動物認養",
+    "免費充電",
+    "免費 WiFi",
     "台灣"
   ],
-  "description": "隨機呈現台灣待認養動物資訊",
-  "repository": "https://github.com/MrMYHuang/taa",
+  "description": "定位台灣的免費充電站或 WiFi 熱點",
+  "repository": "https://github.com/MrMYHuang/tfwc",
   "author": {
     "name": "Meng-Yuan Huang",
     "email": "myh@live.com"
@@ -30,23 +31,20 @@
     "build-electron": "tsc -b tsconfigElectron.json",
     "build-electron-store": "tsc -b tsconfigElectron.json && mv buildElectron/mainStore.js buildElectron/main.js",
     "start-electron": "npm run build-electron && electron .",
-    "dist-snap": "npm run build-electron-store && rm -f dist/*.snap && electron-builder -l snap -c electronBuilderConfigs/snap.json -c.extraMetadata.name=twaa",
+    "dist-snap": "npm run build-electron-store && rm -f dist/*.snap && electron-builder -l snap -c electronBuilderConfigs/snap.json",
     "publish-snap": "snapcraft upload --release=stable dist/*.snap",
     "icons-mas": "cd buildElectron && iconutil -c icns icon.iconset",
     "dist-mas": "npm run build-electron-store && electron-builder -m mas -c electronBuilderConfigs/mas.json",
     "dist-mas-dev": "npm run build-electron-store && electron-builder -m mas-dev -c electronBuilderConfigs/masDev.json"
   },
   "dependencies": {
-    "adm-zip": "^0.5.5",
-    "axios": "^0.21.1",
-    "csv-parse": "^4.16.0",
-    "electron-window-state": "^5.0.3",
-    "node-downloader-helper": "^1.0.18",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-renderer": "16.2.0"
+    "electron-window-state": "^5.0.3"
   },
   "devDependencies": {
+    "node-downloader-helper": "^1.0.18",
+    "react-test-renderer": "16.2.0",
+    "csv-parse": "^4.16.0",
+    "adm-zip": "^0.5.5",
     "@ionic/react": "^5.6.12",
     "@ionic/react-router": "^5.6.12",
     "@testing-library/jest-dom": "^5.14.1",
