@@ -109,3 +109,5 @@ https://myhpwa.github.io/tfwc
 2. iTaiwan中央行政機關室內公共區域免費無線上網熱點查詢服務 ( https://data.gov.tw/dataset/5962 )
 
     此 app 使用《中央行政機關室內公共區域免費手機充電站查詢服務》與《iTaiwan中央行政機關室內公共區域免費無線上網熱點查詢服務》。此開放資料依政府資料開放授權條款 (Open Government Data License) 進行公眾釋出，使用者於遵守本條款各項規定之前提下，得利用之。政府資料開放授權條款：https://data.gov.tw/license
+3. App 圖示台灣輪廓圖來源
+  https://freevectormaps.com/taiwan/TW-EPS-01-0003?ref=atr
