@@ -81,6 +81,9 @@ https://myhpwa.github.io/tfwc
 1. iOS Safari 13.4以上才支援"分享此頁"功能。
 
 ## <a id='history'>版本歷史</a>
+* 2.1.2:
+  * 移除 app 內一些連結，以上架 app 商店。
+  
 * 2.1.0:
   * 新增重新定位鈕。
 

@@ -250,8 +250,6 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
               <IonIcon icon={helpCircle} slot='start' />
               <div className='uiFont'>
                 <div>關於</div>
-                <div><a href="https://github.com/MrMYHuang/tfwc#web-app" target="_new">程式安裝說明</a></div>
-                <div><a href="https://github.com/MrMYHuang/tfwc" target="_new">操作說明與開放原始碼</a></div>
                 <div>作者: Meng-Yuan Huang</div>
                 <div><a href="mailto:myh@live.com" target="_new">myh@live.com</a></div>
               </div>
