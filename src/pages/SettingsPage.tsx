@@ -73,13 +73,6 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem hidden={!this.props.mainVersion}>
-              <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
-              <IonIcon icon={informationCircle} slot='start' />
-              <IonLabel className='ion-text-wrap uiFont'>Backend app版本: {this.props.mainVersion}</IonLabel>
-              {/*<IonButton fill='outline' shape='round' slot='end' size='large' className='uiFont' onClick={e => {
-              }}>分享</IonButton>*/}
-            </IonItem>
             <IonItem>
               <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
               <IonIcon icon={bug} slot='start' />
@@ -234,7 +227,7 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
               <div className="contentBlock">
                 <div style={{ flexDirection: "column" }}>
                   <IonLabel className='ion-text-wrap uiFont'>{Globals.appSettings['uiFontSize']}: {this.props.uiFontSize}</IonLabel>
-                  <IonRange min={12} max={64} pin={true} snaps={true} value={this.props.uiFontSize} onIonChange={e => {
+                  <IonRange min={12} max={32} pin={true} snaps={true} value={this.props.uiFontSize} onIonChange={e => {
                     this.props.dispatch({
                       type: "SET_KEY_VAL",
                       key: 'uiFontSize',

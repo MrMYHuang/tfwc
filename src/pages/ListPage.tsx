@@ -175,19 +175,6 @@ class _ListPage extends React.Component<PageProps, State> {
             }}>
               <IonIcon icon={location} slot='icon-only' />
             </IonButton>
-
-            <IonButton fill="clear" slot='end' onClick={e => {
-              this.props.dispatch({
-                type: "TMP_SET_KEY_VAL",
-                key: 'shareTextModal',
-                val: {
-                  show: true,
-                  text: decodeURIComponent(window.location.href),
-                },
-              });
-            }}>
-              <IonIcon icon={shareSocial} slot='icon-only' />
-            </IonButton>
           </IonToolbar>
         </IonHeader>
         <IonContent>
