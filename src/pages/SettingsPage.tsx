@@ -3,7 +3,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem,
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import Globals from '../Globals';
-import { helpCircle, text, refreshCircle, colorPalette, shareSocial, bug, download, informationCircle } from 'ionicons/icons';
+import { helpCircle, text, refreshCircle, colorPalette, bug, download, informationCircle } from 'ionicons/icons';
 import './SettingsPage.css';
 import PackageInfos from '../../package.json';
 
@@ -73,29 +73,6 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem>
-              <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
-              <IonIcon icon={shareSocial} slot='start' />
-              <IonLabel className='ion-text-wrap uiFont' onClick={async e => {
-                // Disable app update for Mac App Store submission.
-                /*
-                const hasUpdate = await Globals.updateApp();
-
-                if (!hasUpdate) {
-                  this.setState({ showToast: true, toastMessage: 'App 已是最新版' });
-                }*/
-              }}>PWA 版本: <a href="https://github.com/MrMYHuang/tfwc#history" target="_new">{PackageInfos.pwaVersion}</a></IonLabel>
-              <IonButton fill='outline' shape='round' slot='end' size='large' className='uiFont' onClick={e => {
-                this.props.dispatch({
-                  type: "TMP_SET_KEY_VAL",
-                  key: 'shareTextModal',
-                  val: {
-                    show: true,
-                    text: window.location.origin,
-                  },
-                });
-              }}>分享</IonButton>
-            </IonItem>
             <IonItem hidden={!this.props.mainVersion}>
               <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
               <IonIcon icon={informationCircle} slot='start' />
