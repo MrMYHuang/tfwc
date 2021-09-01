@@ -7,6 +7,7 @@ import { FreeWifiItem } from './models/FreeWifiItem';
 import { FreeChargingItem } from './models/FreeChargingItem';
 
 const pwaUrl = process.env.PUBLIC_URL || '';
+const bugReportApiUrl = 'https://vh6ud1o56g.execute-api.ap-northeast-1.amazonaws.com/bugReportMailer';
 let freeChargingUrl = `https://myhdata.s3.ap-northeast-1.amazonaws.com/charge_station_list.zip`;
 let freeWifiUrl = `https://myhdata.s3.ap-northeast-1.amazonaws.com/hotspotlist.zip`;
 
@@ -240,6 +241,7 @@ function isMacCatalyst() {
 
 const Globals = {
   pwaUrl,
+  bugReportApiUrl,
   storeFile: 'tfwcSettings.json',
   downloadCsvZipData,
   getCurrentPosition,

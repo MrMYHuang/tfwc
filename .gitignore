@@ -266,3 +266,5 @@ buildElectron/*.js
 buildElectron/*.map
 *.xcbkptlist
 *.xcuserdatad
+dist
+*.provisionprofile
