@@ -2,7 +2,7 @@ import React from 'react';
 import { IonContent, IonHeader, IonPage, IonToolbar, withIonLifeCycle, IonButton, IonIcon, IonList, IonItem, IonLabel, IonLoading, IonToast, IonTitle, IonInfiniteScroll, IonInfiniteScrollContent, IonAlert } from '@ionic/react';
 import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { shareSocial, location } from 'ionicons/icons';
+import { location } from 'ionicons/icons';
 import { FreeChargingItem } from '../models/FreeChargingItem';
 import { FreeWifiItem } from '../models/FreeWifiItem';
 import { Settings } from '../models/Settings';

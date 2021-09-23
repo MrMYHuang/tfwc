@@ -256,7 +256,7 @@ const Globals = {
   ],
   appSettings: {
     'theme': '佈景主題',
-    'uiFontSize': 'UI字型大小',
+    'uiFontSize': 'UI 字型大小',
   } as Record<string, string>,
   fetchErrorContent: (
     <div className='contentCenter'>

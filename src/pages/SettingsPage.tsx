@@ -100,9 +100,9 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
             <IonItem hidden={!this.props.settings.hasAppLog}>
               <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
               <IonIcon icon={bug} slot='start' />
-              <IonLabel className='ion-text-wrap uiFont'>回報app異常記錄</IonLabel>
+              <IonLabel className='ion-text-wrap uiFont'>回報 app 異常記錄</IonLabel>
               <IonButton fill='outline' shape='round' slot='end' size='large' className='uiFont' onClick={e => {
-                this.reportText = "問題描述(建議填寫)：\n\n瀏覽器：" + navigator.userAgent + "\n\nApp版本：" + PackageInfos.pwaVersion + "\n\nApp設定：" + JSON.stringify(this.props.settings) + "\n\nLog：\n" + Globals.getLog();
+                this.reportText = "瀏覽器：" + navigator.userAgent + "\n\nApp版本：" + PackageInfos.pwaVersion + "\n\nApp設定：" + JSON.stringify(this.props.settings) + "\n\nLog：\n" + Globals.getLog();
                 this.setState({ showBugReportAlert: true });
               }}>回報</IonButton>
               <IonAlert
@@ -117,17 +117,27 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
                     type: 'email',
                     placeholder: '例：abc@example.com'
                   },
+                  {
+                    name: 'name1',
+                    type: 'textarea',
+                    placeholder: '請描述發生步驟'
+                  },
                 ]}
                 buttons={[
                   {
                     text: '送出',
                     cssClass: 'primary uiFont',
                     handler: async (value) => {
+                      if (!/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value.name0)) {
+                        this.setState({ showBugReportAlert: false, showToast: true, toastMessage: `錯誤，E-mail 不符格式！` });
+                        return
+                      }
+
                       try {
-                        const axiosInstance = axios.create({timeout: 10000});
+                        const axiosInstance = axios.create({ timeout: 10000 });
                         await axiosInstance.post(Globals.bugReportApiUrl, {
                           subject: `${PackageInfos.productName}異常記錄回報`,
-                          text: `E-mail: ${value.name0}\n${this.reportText}`,
+                          text: `E-mail: ${value.name0}\n\n發生步驟: ${value.name1}\n\n${this.reportText}`,
                         });
                         this.setState({ showBugReportAlert: false, showToast: true, toastMessage: `異常回報成功` });
                       } catch (error) {
