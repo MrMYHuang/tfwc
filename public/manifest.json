@@ -16,6 +16,11 @@
   ],
   "scope": "/tfwc/",
   "start_url": "/tfwc/",
+  "url_handlers": [
+    {
+      "origin": "https://myhpwa.github.io/tfwc/"
+    }
+  ],
   "shortcuts": [
     {
       "name": "免費充電",
