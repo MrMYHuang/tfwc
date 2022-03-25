@@ -59,7 +59,7 @@
     "axios": "^0.21.1",
     "csv-parse": "^4.16.0",
     "customize-cra": "^1.0.0",
-    "electron": "^11.4.10",
+    "electron": "^13.6.6",
     "electron-builder": "^22.11.7",
     "electron-builder-notarize-pkg": "^1.2.0",
     "history": "^4.10.1",
