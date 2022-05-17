@@ -208,11 +208,6 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
   restoreAppSettings() {
     localStorage.setItem(Globals.storeFile, this.originalAppSettingsStr!);
     this.props.dispatch({ type: 'LOAD_SETTINGS' });
-    while (document.body.classList.length > 0) {
-      document.body.classList.remove(document.body.classList.item(0)!);
-    }
-    document.body.classList.toggle(`theme${this.props.settings.theme}`, true);
-    Globals.updateCssVars(this.props.settings);
   }
 
   async loadTwdData() {
@@ -265,7 +260,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
       } else {
         console.error('navigator.wakeLock is undefined.');
       }
-    } catch (err) {
+    } catch (err: any) {
       // the wake lock request fails - usually system related, such low as battery
       console.log(`${err.name}, ${err.message}`);
       console.log(new Error().stack);
@@ -299,7 +294,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
       if (queryMatches !== null) {
         query = decodeURIComponent(queryMatches[1]);
       }
-      return <Redirect to={route + query} />;
+      return <Redirect to={`${Globals.pwaUrl}` + route + query} />;
     } else if (window.location.pathname === `${Globals.pwaUrl}/` || window.location.pathname === `${Globals.pwaUrl}`) {
       return <Redirect to={`${Globals.pwaUrl}/charging`} />;
     }

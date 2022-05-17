@@ -8,8 +8,8 @@ import { FreeChargingItem } from './models/FreeChargingItem';
 
 const pwaUrl = process.env.PUBLIC_URL || '';
 const bugReportApiUrl = 'https://vh6ud1o56g.execute-api.ap-northeast-1.amazonaws.com/bugReportMailer';
-let freeChargingUrl = `https://myhdata.s3.ap-northeast-1.amazonaws.com/charge_station_list.zip`;
-let freeWifiUrl = `https://myhdata.s3.ap-northeast-1.amazonaws.com/hotspotlist.zip`;
+let freeChargingUrl = `https://d23fxcqevt3np7.cloudfront.net/charge_station_list.zip`;
+let freeWifiUrl = `https://d23fxcqevt3np7.cloudfront.net/hotspotlist.zip`;
 
 const tfwcDb = 'tfwcDb';
 const freeChargingDataKey = 'freeCharging';
