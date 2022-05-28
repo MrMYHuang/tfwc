@@ -65,7 +65,6 @@
     "history": "^4.10.1",
     "ionicons": "^6",
     "memfs": "^3.2.0",
-    "memfs-myh": "^3.4.4",
     "node-downloader-helper": "^2.1.1",
     "node-polyfill-webpack-plugin-myh": "1.1.6",
     "qrcode": "^1.5.0",
