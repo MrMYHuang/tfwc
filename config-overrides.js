@@ -1,5 +1,5 @@
 const customizeCra = require("customize-cra");
-const path = require("path");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin-myh");
 
 module.exports = customizeCra.override(
   // add webpack bundle visualizer if BUNDLE_VISUALIZE flag is enabled
@@ -7,20 +7,9 @@ module.exports = customizeCra.override(
 
   // add an alias for "ag-grid-react" imports
   customizeCra.addWebpackAlias({
-    ["fs"]: 'memfs'
+    ["fs"]: 'memfs-myh'
   }),
 
-  customizeCra.adjustWorkbox(wb =>
-    Object.assign(wb, {
-      runtimeCaching: [
-        {
-          urlPattern: /.*\.woff/,
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'webfonts'
-          }
-        }
-      ]
-    })
-  )
+  customizeCra.addWebpackPlugin(new NodePolyfillPlugin()),
+  customizeCra.removeModuleScopePlugin(),
 );

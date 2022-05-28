@@ -145,7 +145,7 @@ async function getCurrentPosition() {
 }
 
 function distance(item: FreeChargingItem | FreeWifiItem, coords: GeolocationCoordinates) {
-  return Math.sqrt((item.經度 - coords.longitude)**2 + (item.緯度 - coords.latitude)**2)
+  return Math.sqrt((item.經度 - coords.longitude) ** 2 + (item.緯度 - coords.latitude) ** 2)
 }
 
 async function getCurrentPositionAndSortData(dispatch: Function, freeChargingItems: Array<FreeChargingItem>, freeWifiItems: Array<FreeWifiItem>) {
@@ -155,7 +155,7 @@ async function getCurrentPositionAndSortData(dispatch: Function, freeChargingIte
     dispatch({
       type: "TMP_SET_KEY_VAL",
       key: 'currPosition',
-      val: postiion,
+      val: { ...postiion },
     });
     dispatch({
       type: "TMP_SET_KEY_VAL",

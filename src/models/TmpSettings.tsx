@@ -1,11 +1,25 @@
 import { FreeChargingItem } from "./FreeChargingItem";
-import { FreeWifiItem } from "./FreeWifiItem";
+import { IFreeWifiItem } from "./FreeWifiItem";
 
-export class TmpSettings {
-    fetchError: boolean = false;
-    isLoadingData: boolean = false;
-    freeChargingItems: Array<FreeChargingItem> = [];
-    freeWifiItems: Array<FreeWifiItem> = [];
-    currPosition: GeolocationPosition | undefined = undefined;
-    shareTextModal = { text: '', show: false };
+export interface ShareTextModal {
+    text: string;
+    show: boolean;
 }
+
+export interface TmpSettings {
+    fetchError: boolean;
+    isLoadingData: boolean;
+    freeChargingItems: Array<FreeChargingItem>;
+    freeWifiItems: Array<IFreeWifiItem>;
+    currPosition: GeolocationPosition | undefined;
+    shareTextModal: ShareTextModal;
+}
+
+export const defaultTmpSettings = {
+    fetchError: false,
+    isLoadingData: false,
+    freeChargingItems: [],
+    freeWifiItems: [],
+    currPosition: undefined,
+    shareTextModal: { text: '', show: false },
+};

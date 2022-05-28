@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, Route, RouteComponentProps, withRouter } from 'react-router-dom';
 import {
-  setupConfig,
   IonApp,
   IonIcon,
   IonRouterOutlet,
@@ -11,6 +10,7 @@ import {
   IonAlert,
   isPlatform,
   IonToast,
+  setupIonicReact,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { connect, Provider } from 'react-redux';
@@ -63,7 +63,7 @@ class DebugRouter extends IonReactRouter {
 }
 */
 
-setupConfig({
+setupIonicReact({
   mode: 'md', // Use a consistent UI style across Android and iOS.
   swipeBackEnabled: false,
 });
@@ -121,7 +121,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
     electronBackendApi?.receive("fromMain", (data: any) => {
       switch (data.event) {
         case 'version':
-          store.dispatch({
+          this.props.dispatch({
             type: "TMP_SET_KEY_VAL",
             key: 'mainVersion',
             val: data.version,
@@ -211,7 +211,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
   }
 
   async loadTwdData() {
-    store.dispatch({
+    this.props.dispatch({
       type: "TMP_SET_KEY_VAL",
       key: 'isLoadingData',
       val: true,
@@ -228,16 +228,16 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
       }
 
       if (i === 0) {
-        store.dispatch({
+        this.props.dispatch({
           type: "TMP_SET_KEY_VAL",
           key: 'freeChargingItems',
-          val: data.map(d => new FreeChargingItem(d)),
+          val: data.map(d => { return { ...new FreeChargingItem(d) }; }),
         });
       } else {
-        store.dispatch({
+        this.props.dispatch({
           type: "TMP_SET_KEY_VAL",
           key: 'freeWifiItems',
-          val: data.map(d => new FreeWifiItem(d)),
+          val: data.map(d => { return { ...new FreeWifiItem(d) }; }),
         });
       }
     }
@@ -307,7 +307,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
       this.props.tmpSettings.freeWifiItems
     );
 
-    store.dispatch({
+    this.props.dispatch({
       type: "TMP_SET_KEY_VAL",
       key: 'isLoadingData',
       val: false,
@@ -368,7 +368,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
             text: this.props.shareTextModal?.text,
             showModal: this.props.shareTextModal?.show || false,
             finish: () => {
-              store.dispatch({
+              this.props.dispatch({
                 type: "TMP_SET_KEY_VAL",
                 key: 'shareTextModal',
                 val: { show: false },
@@ -390,7 +390,7 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
                 this.setState({
                   showGetPositionAlert: false,
                 });
-                store.dispatch({
+                this.props.dispatch({
                   type: "SET_KEY_VAL",
                   key: 'isInitialized',
                   val: true,
@@ -434,8 +434,8 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
 const mapStateToProps = (state: any /*, ownProps*/) => {
   return {
     shareTextModal: state.tmpSettings.shareTextModal,
-    settings: state.settings,
-    tmpSettings: state.tmpSettings,
+    settings: { ...state.settings },
+    tmpSettings: { ...state.tmpSettings },
   }
 };
 

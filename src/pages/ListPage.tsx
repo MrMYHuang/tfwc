@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { IonContent, IonHeader, IonPage, IonToolbar, withIonLifeCycle, IonButton, IonIcon, IonList, IonItem, IonLabel, IonLoading, IonToast, IonTitle, IonInfiniteScroll, IonInfiniteScrollContent, IonAlert } from '@ionic/react';
 import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -109,7 +109,7 @@ class _ListPage extends React.Component<PageProps, State> {
   selectedMapUrl = '';
   getRows() {
     const userCoords = this.props.tmpSettings.currPosition?.coords;
-    let rows = Array<object>();
+    let rows = Array<ReactNode>();
     this.state.dataParts.forEach((item: FreeChargingItem | FreeWifiItem, index: number) => {
       let mapUrl = '';
       if (userCoords != null) {
@@ -251,8 +251,8 @@ const ListPage = withIonLifeCycle(_ListPage);
 const mapStateToProps = (state: any /*, ownProps*/) => {
   return {
     isLoadingData: state.tmpSettings.isLoadingData,
-    tmpSettings: state.tmpSettings,
-    settings: state.settings,
+    tmpSettings: { ...state.tmpSettings },
+    settings: { ...state.settings },
   }
 };
 

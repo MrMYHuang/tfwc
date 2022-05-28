@@ -1,4 +1,13 @@
-export class FreeChargingItem {
+export interface IFreeChargingItem {
+    主管機關: string; // Eg. '內政部'
+    地區: string; // Eg. '新北市'
+    充電站名稱: string; // Eg. '新北市新店戶政事務所'
+    地址: string; // Eg. '231新北市新店區行政街2號2樓'
+    緯度: number; // Eg. '24.967241'
+    經度: number; // Eg. '121.542046'
+}
+
+export class FreeChargingItem implements IFreeChargingItem {
     主管機關 = ''; // Eg. '內政部'
     地區 = ''; // Eg. '新北市'
     充電站名稱 = ''; // Eg. '新北市新店戶政事務所'

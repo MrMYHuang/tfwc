@@ -1,4 +1,13 @@
-export class FreeWifiItem {
+export interface IFreeWifiItem {
+    主管機關: string; // Eg. '行政院農業委員會'
+    地區: string; // Eg. '臺北市'
+    熱點名稱: string; // Eg. '行政院農業委員會10樓辦公區'
+    地址: string // Eg. '100臺北市中正區南海路37號10樓'
+    緯度: number; // Eg. '25.0320680'
+    經度: number; // Eg. '121.5132000'
+}
+
+export class FreeWifiItem implements IFreeWifiItem {
     主管機關 = ''; // Eg. '行政院農業委員會'
     地區 = ''; // Eg. '臺北市'
     熱點名稱 = ''; // Eg. '行政院農業委員會10樓辦公區'
