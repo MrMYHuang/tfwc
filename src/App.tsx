@@ -245,7 +245,9 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
     if (!this.props.settings.isInitialized) {
       this.setState({ showGetPositionAlert: true });
     } else {
-      this.getCurrentPositionAndSortData();
+      setTimeout(() => {
+        this.getCurrentPositionAndSortData();
+      }, 0);
     }
   }
 
