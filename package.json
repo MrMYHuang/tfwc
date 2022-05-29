@@ -30,8 +30,6 @@
     "build-electron": "tsc -b tsconfigElectron.json",
     "build-electron-store": "tsc -b tsconfigElectron.json && mv buildElectron/mainStore.js buildElectron/main.js",
     "start-electron": "npm run build-electron && electron .",
-    "dist-snap": "npm run build-electron-store && rm -f dist/*.snap && electron-builder -l snap -c electronBuilderConfigs/snap.json",
-    "publish-snap": "snapcraft upload --release=stable dist/*.snap",
     "icons-mas": "cd buildElectron && iconutil -c icns icon.iconset",
     "dist-mas": "npm run build-electron-store && electron-builder -m mas -c electronBuilderConfigs/mas.json",
     "dist-mas-dev": "npm run build-electron-store && electron-builder -m mas-dev -c electronBuilderConfigs/masDev.json"

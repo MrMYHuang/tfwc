@@ -1,10 +1,5 @@
 {
-  "extends": null,
-  "appId": "io.github.myhpwa.tfwc",
-  "files": [
-    "buildElectron/**/*",
-    "package.json"
-  ],
+  "extends": "electronBuilderConfigs/common.json",
   "icon": "buildElectron/icon.icns",
   "mac": {
     "type": "development",
@@ -12,9 +7,7 @@
   },
   "masDev": {
     "type": "development",
-    "artifactName": "${name}_${version}_macos64.${ext}",
-    "category": "public.app-category.education",
-    "minimumSystemVersion": "10.10",
+    "artifactName": "${name}_${version}_masDev.${ext}",
     "hardenedRuntime": false,
     "entitlements": "buildElectron/entitlements.mas.plist",
     "entitlementsInherit": "buildElectron/entitlements.mas.inherit.plist",
