@@ -8,7 +8,7 @@
   "linux": {
     "artifactName": "${name}_${version}_linux_${arch}.${ext}",
     "desktop": {
-      "StartupWMClass": "taa"
+      "StartupWMClass": "tfwc"
     },
     "category": "None"
   },

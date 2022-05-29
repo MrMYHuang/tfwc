@@ -81,12 +81,12 @@ https://myhpwa.github.io/tfwc
 ### <a id='storeApp'>從 App 商店安裝</a>
 #### Android - 使用 Google Play Store
 <a href='https://play.google.com/store/apps/details?id=tfwc.droid' target='_blank'>
-<img width="auto" height='60px' alt='Google Play立即下載' src='https://github.com/MrMYHuang/taa/raw/master/docs/images/zh-tw_badge_web_generic.png'/>
+<img width="auto" height='60px' alt='Google Play立即下載' src='https://github.com/MrMYHuang/tfwc/raw/master/docs/images/zh-tw_badge_web_generic.png'/>
 </a>
 
 #### iOS 14.0+ (iPhone), iPadOS 14.0+ (iPad) - 使用 Apple App Store
 <a href='https://apps.apple.com/app/id1580564553' target='_blank'>
-<img width="auto" height='60px' src='https://github.com/MrMYHuang/taa/raw/master/docs/images/Download_on_the_App_Store_Badge_CNTC_RGB_blk_100217.svg'/>
+<img width="auto" height='60px' src='https://github.com/MrMYHuang/tfwc/raw/master/docs/images/Download_on_the_App_Store_Badge_CNTC_RGB_blk_100217.svg'/>
 </a>
 
 #### Windows 10 - 使用 Microsoft Store
