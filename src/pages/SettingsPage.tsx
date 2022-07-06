@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import axios from 'axios';
 
 import Globals from '../Globals';
-import { helpCircle, text, refreshCircle, colorPalette, bug, download } from 'ionicons/icons';
+import { helpCircle, text, refreshCircle, colorPalette, bug, settings } from 'ionicons/icons';
 import './SettingsPage.css';
 import PackageInfos from '../../package.json';
 
@@ -157,7 +157,7 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
             </IonItem>
             <IonItem>
               <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
-              <IonIcon icon={download} slot='start' />
+              <IonIcon icon={settings} slot='start' />
               <div className='contentBlock'>
                 <div style={{ flexDirection: 'column' }}>
                   <IonLabel className='ion-text-wrap uiFont'>App 設定</IonLabel>
@@ -178,9 +178,9 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
                         JSON.parse(fileText);
                         localStorage.setItem(Globals.storeFile, fileText);
                         this.props.dispatch({ type: 'LOAD_SETTINGS' });
-                        setImmediate(() => {
+                        setTimeout(() => {
                           this.updateData();
-                        });
+                        }, 0);
                       } catch (e) {
                         console.error(e);
                         console.error(new Error().stack);
@@ -280,15 +280,15 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
               <div className="contentBlock">
                 <div style={{ flexDirection: "column" }}>
                   <IonLabel className='ion-text-wrap uiFont'>{Globals.appSettings['uiFontSize']}: {this.props.uiFontSize}</IonLabel>
-                  <IonRange min={12} max={32} pin={true} snaps={true} value={this.props.uiFontSize} onIonChange={e => {
+                  <IonRange min={12} max={64} pin={true} snaps={true} value={this.props.uiFontSize} onIonChange={e => {
                     this.props.dispatch({
                       type: "SET_KEY_VAL",
                       key: 'uiFontSize',
                       val: +e.detail.value,
                     });
-                    setImmediate(() => {
+                    setTimeout(() => {
                       Globals.updateCssVars(this.props.settings);
-                    });
+                    }, 0);
                   }} />
                 </div>
               </div>

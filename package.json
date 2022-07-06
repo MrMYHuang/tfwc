@@ -2,7 +2,7 @@
   "name": "tfwc",
   "homepage": "/tfwc",
   "productName": "免費WiFi與充電",
-  "pwaVersion": "2.4.0",
+  "pwaVersion": "2.4.1",
   "version": "2.0.0",
   "license": "MIT",
   "keywords": [
@@ -23,8 +23,7 @@
   "main": "buildElectron/main.js",
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build && powershell -file CopyBuild.ps1",
-    "build_linux": "react-app-rewired build && ./CopyBuild.sh",
+    "build": "react-app-rewired build && node ./tools/build.js",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "build-electron": "tsc -b tsconfigElectron.json",
