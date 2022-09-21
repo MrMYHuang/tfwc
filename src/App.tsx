@@ -316,6 +316,16 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
     });
   }
 
+  componentDidMount() {
+    const now = new Date();
+    const dbUpdateDate = new Date(this.props.settings.dbUpdateDate);
+    const timeDiff = now.getTime() - dbUpdateDate.getTime();
+    if (this.props.settings.alertUpdateOfflineData &&
+      (timeDiff > 1000 * 60 * 60 * 24 * 30)) {
+      this.setState({ showToast: true, toastMessage: `離線資料已 30 天未更新，可至設定頁更新。` });
+    }
+  }
+
   render() {
     return (
       <IonApp>

@@ -95,9 +95,12 @@ https://myhpwa.github.io/tfwc
 </a>
 
 ## <a id='knownIssues'>已知問題</a>
-1. iOS Safari 13.4以上才支援"分享此頁"功能。
+1. iOS Safari 13.4 以上才支援"分享此頁"功能。
 
 ## <a id='history'>版本歷史</a>
+* PWA 2.5.0:
+  * [新增] 離線資料更新通知設定。
+
 * PWA 2.4.2:
   * [修正] Chrome 瀏覽器開啟自動中翻英後，app 功能異常的 bug。
 

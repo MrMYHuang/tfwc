@@ -57,14 +57,24 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
 
   async updateData() {
     this.setState({ dataDownloadRatio: 0 });
-    for (let i = 0; i < Globals.freeResources.length; i++) {
-      let item = Globals.freeResources[i];
-      const data = await Globals.downloadCsvZipData(item.url, (progress: number) => {
-        this.setState({ dataDownloadRatio: (i + (progress / 100)) / Globals.freeResources.length });
+    try {
+      for (let i = 0; i < Globals.freeResources.length; i++) {
+        let item = Globals.freeResources[i];
+        const data = await Globals.downloadCsvZipData(item.url, (progress: number) => {
+          this.setState({ dataDownloadRatio: (i + (progress / 100)) / Globals.freeResources.length });
+        });
+        Globals.saveFileToIndexedDB(item.dataKey, data);
+      }
+      this.setState({ dataDownloadRatio: 1, showUpdateDataDone: true });
+
+      this.props.dispatch({
+        type: "SET_KEY_VAL",
+        key: 'dbUpdateDate',
+        val: new Date().toISOString(),
       });
-      Globals.saveFileToIndexedDB(item.dataKey, data);
+    } catch (error) {
+      this.setState({ showToast: true, toastMessage: `錯誤：${error}` });
     }
-    this.setState({ dataDownloadRatio: 1, showUpdateDataDone: true });
   }
 
   reportText = '';
@@ -231,6 +241,7 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
               <IonIcon icon={refreshCircle} slot='start' />
               <div style={{ width: '100%' }}>
                 <IonLabel className='ion-text-wrap uiFont'>更新離線資料</IonLabel>
+                <IonLabel className='ion-text-wrap uiFont'>上次更新：{new Date(this.props.settings.dbUpdateDate).toLocaleDateString()}</IonLabel>
                 <IonProgressBar value={this.state.dataDownloadRatio} />
               </div>
               <IonButton fill='outline' shape='round' slot='end' size='large' className='uiFont' onClick={async (e) => this.updateData()}>更新</IonButton>
@@ -241,6 +252,20 @@ class _SettingsPage extends React.Component<PageProps, StateProps> {
                 message={`離線資料更新完畢！`}
                 duration={2000}
               />
+            </IonItem>
+            <IonItem>
+              <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
+              <IonIcon icon={refreshCircle} slot='start' />
+              <IonLabel className='ion-text-wrap uiFont'>啟用離線資料更新通知</IonLabel>
+              <IonToggle slot='end' checked={this.props.settings.alertUpdateOfflineData} onIonChange={e => {
+                const isChecked = e.detail.checked;
+
+                this.props.dispatch({
+                  type: "SET_KEY_VAL",
+                  key: 'alertUpdateOfflineData',
+                  val: isChecked
+                });
+              }} />
             </IonItem>
             <IonItem>
               <div tabIndex={0}></div>{/* Workaround for macOS Safari 14 bug. */}
