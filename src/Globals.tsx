@@ -149,27 +149,23 @@ function distance(item: FreeChargingItem | FreeWifiItem, coords: GeolocationCoor
 }
 
 async function getCurrentPositionAndSortData(dispatch: Function, freeChargingItems: Array<FreeChargingItem>, freeWifiItems: Array<FreeWifiItem>) {
-  try {
-    const postiion = await getCurrentPosition();
-    const userCoords = postiion.coords;
-    dispatch({
-      type: "TMP_SET_KEY_VAL",
-      key: 'currPosition',
-      val: { ...postiion },
-    });
-    dispatch({
-      type: "TMP_SET_KEY_VAL",
-      key: 'freeChargingItems',
-      val: freeChargingItems.sort((a, b) => distance(a, userCoords) - distance(b, userCoords)),
-    });
-    dispatch({
-      type: "TMP_SET_KEY_VAL",
-      key: 'freeWifiItems',
-      val: freeWifiItems.sort((a, b) => distance(a, userCoords) - distance(b, userCoords)),
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  const postiion = await getCurrentPosition();
+  const userCoords = postiion.coords;
+  dispatch({
+    type: "TMP_SET_KEY_VAL",
+    key: 'currPosition',
+    val: { ...postiion },
+  });
+  dispatch({
+    type: "TMP_SET_KEY_VAL",
+    key: 'freeChargingItems',
+    val: freeChargingItems.sort((a, b) => distance(a, userCoords) - distance(b, userCoords)),
+  });
+  dispatch({
+    type: "TMP_SET_KEY_VAL",
+    key: 'freeWifiItems',
+    val: freeWifiItems.sort((a, b) => distance(a, userCoords) - distance(b, userCoords)),
+  });
 }
 
 //const electronBackendApi: any = (window as any).electronBackendApi;

@@ -98,6 +98,12 @@ https://myhpwa.github.io/tfwc
 1. iOS Safari 13.4 以上才支援"分享此頁"功能。
 
 ## <a id='history'>版本歷史</a>
+* Android 1.0.10 (10):
+  * [修正] 定位失敗。
+
+* PWA 2.6.0:
+  * [新增] 過濾搜尋功能。
+
 * PWA 2.5.0:
   * [新增] 離線資料更新通知設定。
 
@@ -167,3 +173,4 @@ https://myhpwa.github.io/tfwc
 ## Notices
 
   1. Android Package ID: tfwc.droid
+  2. Don't use "Location delegation" when generating Android package by pwabuilder.

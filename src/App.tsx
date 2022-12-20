@@ -303,11 +303,16 @@ class _AppOrig extends React.Component<AppOrigProps, State> {
   }
 
   async getCurrentPositionAndSortData() {
-    await Globals.getCurrentPositionAndSortData(
-      store.dispatch,
-      this.props.tmpSettings.freeChargingItems,
-      this.props.tmpSettings.freeWifiItems
-    );
+    try {
+      await Globals.getCurrentPositionAndSortData(
+        store.dispatch,
+        this.props.tmpSettings.freeChargingItems,
+        this.props.tmpSettings.freeWifiItems
+      );
+    } catch (error) {
+      console.error(error);
+      this.setState({ showToast: true, toastMessage: `定位失敗` });
+    }
 
     this.props.dispatch({
       type: "TMP_SET_KEY_VAL",

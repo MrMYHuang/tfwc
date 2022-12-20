@@ -1,3 +1,20 @@
 .listItem {
     flex-direction: column;
 }
+
+.ionSelect {
+    border: 2px solid var(--ion-color-primary);
+}
+
+.ionInput {
+    border: 2px solid var(--ion-color-primary);
+}
+
+.uisRow {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
