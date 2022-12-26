@@ -86,6 +86,7 @@ class _ListPage extends React.Component<PageProps, State> {
 
   page = 0;
   rows = 20;
+  loadMoreLock = false;
   async fetchData(fromStart: boolean = false) {
     await new Promise<void>((ok, fail) => {
       let timer = setInterval(() => {
@@ -95,6 +96,11 @@ class _ListPage extends React.Component<PageProps, State> {
         }
       }, 50);
     });
+
+    if (this.loadMoreLock) {
+      return;
+    }
+    this.loadMoreLock = true;
 
     if (fromStart) {
       if (this.mode !== 'wifi') {
@@ -118,14 +124,17 @@ class _ListPage extends React.Component<PageProps, State> {
       this.page = 0;
     }
 
-    //console.log(`Loading page ${this.page}`);
+    console.log(`Loading page ${this.page}`);
 
-    const dataPart = this.dataFiltered.slice(this.page * this.rows, (this.page + 1) * this.rows);
+    const newDataPartRangeEnd = Math.min((this.page + 1) * this.rows, this.dataFiltered.length);
+    const dataPart = this.dataFiltered.slice(this.page * this.rows, newDataPartRangeEnd);
     const newDataParts = fromStart ? dataPart : [...this.state.dataParts, ...dataPart];
-    this.page += 1;
     this.setState({
       fetchError: false, dataParts: newDataParts,
       isScrollOn: newDataParts.length < this.dataFiltered.length,
+    }, () => {
+      this.page += 1;
+      this.loadMoreLock = false;
     });
 
     return true;
