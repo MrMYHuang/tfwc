@@ -2,7 +2,7 @@
   "name": "tfwc",
   "homepage": "/tfwc",
   "productName": "免費WiFi與充電",
-  "pwaVersion": "2.6.1",
+  "pwaVersion": "2.6.2",
   "version": "2.0.0",
   "license": "MIT",
   "keywords": [
@@ -37,8 +37,8 @@
     "electron-window-state": "^5.0.3"
   },
   "devDependencies": {
-    "@ionic/react": "^6.4.1",
-    "@ionic/react-router": "^6.4.1",
+    "@ionic/react": "^6.7.5",
+    "@ionic/react-router": "^6.7.5",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

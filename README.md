@@ -98,6 +98,9 @@ https://myhpwa.github.io/tfwc
 1. iOS Safari 13.4 以上才支援"分享此頁"功能。
 
 ## <a id='history'>版本歷史</a>
+* PWA 2.6.2:
+  * [修正] Chrome 115 下拉選單顯示異常。
+
 * PWA 2.6.1:
   * [修正] 分頁讀取搜尋結果未依序顯示。
 
