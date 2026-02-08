@@ -1,12 +1,11 @@
 import { isPlatform, IonLabel } from '@ionic/react';
-import fs from 'fs';
-import AdmZip from 'adm-zip';
+import { unzipSync, strFromU8 } from 'fflate';
 import parse from 'csv-parse/lib/sync';
-import { DownloaderHelper, Stats } from 'node-downloader-helper';
 import { FreeWifiItem } from './models/FreeWifiItem';
 import { FreeChargingItem } from './models/FreeChargingItem';
 
-const pwaUrl = process.env.PUBLIC_URL || '';
+const baseUrl = import.meta.env.BASE_URL || '';
+const pwaUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
 const bugReportApiUrl = 'https://vh6ud1o56g.execute-api.ap-northeast-1.amazonaws.com/bugReportMailer';
 let freeChargingUrl = `https://d23fxcqevt3np7.cloudfront.net/charge_station_list.zip`;
 let freeWifiUrl = `https://d23fxcqevt3np7.cloudfront.net/hotspotlist.zip`;
@@ -17,9 +16,13 @@ const freeWifiDataKey = 'freeWifi';
 let log = '';
 
 async function downloadCsvZipData(url: string, progressCallback: Function) {
-  let dataBuffer = await downloadData(url, progressCallback);
-  const zip = new AdmZip(dataBuffer);
-  let dataStr = zip.getEntries()[0].getData().toString('utf8');
+  const dataBuffer = await downloadData(url, progressCallback);
+  const files = unzipSync(dataBuffer);
+  const firstFileName = Object.keys(files)[0];
+  if (!firstFileName) {
+    throw new Error('Zip file is empty.');
+  }
+  const dataStr = strFromU8(files[firstFileName]);
   return parse(dataStr, {
     columns: true,
     bom: dataStr.charCodeAt(0) === 0xFEFF,
@@ -27,26 +30,52 @@ async function downloadCsvZipData(url: string, progressCallback: Function) {
 }
 
 async function downloadData(url: string, progressCallback: Function) {
-  return new Promise<Buffer>((ok, fail) => {
-    const dl = new DownloaderHelper(url, '.', {});
-    let progressUpdateEnable = true;
-    dl.on('progress', (stats: Stats) => {
-      if (progressUpdateEnable) {
-        // Reduce number of this calls by progressUpdateEnable.
-        // Too many of this calls could result in 'end' event callback is executed before 'progress' event callbacks!
-        progressCallback(stats.progress);
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Download failed: ${response.status} ${response.statusText}`);
+  }
+
+  const contentLengthHeader = response.headers.get('content-length');
+  const totalBytes = contentLengthHeader ? parseInt(contentLengthHeader, 10) : 0;
+  let progressUpdateEnable = true;
+
+  if (!response.body) {
+    const data = new Uint8Array(await response.arrayBuffer());
+    progressCallback(100);
+    return data;
+  }
+
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let receivedBytes = 0;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      break;
+    }
+    if (value) {
+      chunks.push(value);
+      receivedBytes += value.length;
+      if (totalBytes > 0 && progressUpdateEnable) {
+        progressCallback((receivedBytes / totalBytes) * 100);
         progressUpdateEnable = false;
         setTimeout(() => {
           progressUpdateEnable = true;
         }, 100);
       }
-    });
-    dl.on('end', (downloadInfo: any) => {
-      dl.removeAllListeners();
-      ok(fs.readFileSync(downloadInfo.filePath));
-    });
-    dl.start();
-  });
+    }
+  }
+
+  const data = new Uint8Array(receivedBytes);
+  let offset = 0;
+  for (const chunk of chunks) {
+    data.set(chunk, offset);
+    offset += chunk.length;
+  }
+
+  progressCallback(100);
+  return data;
 }
 
 async function getFileFromIndexedDB(fileName: string) {
@@ -277,7 +306,7 @@ const Globals = {
       <IonLabel>
         <div>
           <div>連線失敗!</div>
-          <div style={{ fontSize: 'var(--ui-font-size)', paddingTop: 24 }}>如果問題持續發生，請執行<a href={`/${pwaUrl}/settings`} target="_self">設定頁</a>的 app 異常回報功能。</div>
+          <div style={{ fontSize: 'var(--ui-font-size)', paddingTop: 24 }}>如果問題持續發生，請執行<a href={`${pwaUrl}/settings`} target="_self">設定頁</a>的 app 異常回報功能。</div>
         </div>
       </IonLabel>
     </div>

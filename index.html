@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta name="google" content="notranslate">
     <meta charset="utf-8" />
     <title>免費WiFi與充電</title>
 
     <meta name="color-scheme" content="light dark" />
-    <meta name="viewport"
-        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/assets/icon/icon.png" />
+    <link rel="manifest" href="%BASE_URL%manifest.json" />
+    <link rel="shortcut icon" type="image/png" href="%BASE_URL%assets/icon/icon.png" />
 
     <!-- add to homescreen for ios -->
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/assets/icon/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%assets/icon/icon.png">
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="免費WiFi與充電" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root"></div>
-</body>
-
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
 </html>

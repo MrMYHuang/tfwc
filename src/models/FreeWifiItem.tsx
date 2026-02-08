@@ -1,26 +1,35 @@
 export interface IFreeWifiItem {
-    主管機關: string; // Eg. '行政院農業委員會'
-    地區: string; // Eg. '臺北市'
-    熱點名稱: string; // Eg. '行政院農業委員會10樓辦公區'
-    地址: string // Eg. '100臺北市中正區南海路37號10樓'
-    緯度: number; // Eg. '25.0320680'
-    經度: number; // Eg. '121.5132000'
+    主管機關: string; // Ministry
+    地區: string; // Area
+    機關: string; // Agency
+    熱點名稱: string; // Name
+    地址: string // Address
+    管理單位: string; // Administration
+    緯度: number; // Latitude
+    經度: number; // Longitude
 }
 
 export class FreeWifiItem implements IFreeWifiItem {
-    主管機關 = ''; // Eg. '行政院農業委員會'
-    地區 = ''; // Eg. '臺北市'
-    熱點名稱 = ''; // Eg. '行政院農業委員會10樓辦公區'
-    地址 = ''; // Eg. '100臺北市中正區南海路37號10樓'
-    緯度 = 0; // Eg. '25.0320680'
-    經度 = 0; // Eg. '121.5132000'
+    主管機關 = ''; // Ministry
+    地區 = ''; // Area
+    機關 = ''; // Agency
+    熱點名稱 = ''; // Name
+    地址 = ''; // Address
+    管理單位 = ''; // Administration
+    緯度 = 0; // Latitude
+    經度 = 0; // Longitude
 
     constructor(json: any) {
-        this.主管機關 = json.主管機關;
-        this.地區 = json.地區;
-        this.熱點名稱 = json.熱點名稱;
-        this.地址 = json.地址;
-        this.緯度 = +json.緯度;
-        this.經度 = +json.經度;
+        // Latest hotspotlist.zip uses English headers; keep legacy support too.
+        this.主管機關 = json.Ministry ?? json.主管機關 ?? '';
+        this.地區 = json.Area ?? json.地區 ?? '';
+        this.機關 = json.Agency ?? json.機關 ?? '';
+        this.熱點名稱 = json.Name ?? json.熱點名稱 ?? '';
+        this.地址 = json.Address ?? json.地址 ?? '';
+        this.管理單位 = json.Administration ?? json.管理單位 ?? '';
+        const lat = +(json.Latitude ?? json.緯度 ?? 0);
+        const lng = +(json.Longitude ?? json.經度 ?? 0);
+        this.緯度 = Number.isFinite(lat) ? lat : 0;
+        this.經度 = Number.isFinite(lng) ? lng : 0;
     }
 }

@@ -1,2 +1,2 @@
 #!/bin/bash
-cd ./tfwc-pwa && rm -rf * && cp -r ../build/* ../build/.nojekyll .
+cd ./tfwc-pwa && rm -rf * && cp -r ../dist/* ../dist/.nojekyll .
