@@ -268,3 +268,4 @@ buildElectron/*.map
 *.xcuserdatad
 dist
 *.provisionprofile
+android/

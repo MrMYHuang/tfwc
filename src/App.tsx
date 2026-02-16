@@ -40,8 +40,7 @@ import SettingsPage from './pages/SettingsPage';
 import Globals from './Globals';
 import ListPage from './pages/ListPage';
 import ShareTextModal from './components/ShareTextModal';
-import { FreeChargingItem } from './models/FreeChargingItem';
-import { FreeWifiItem } from './models/FreeWifiItem';
+import { FreeChargingItem, FreeWifiItem } from 'tfwc-data';
 import { Settings } from './models/Settings';
 import { TmpSettings } from './models/TmpSettings';
 

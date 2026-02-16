@@ -1,5 +1,4 @@
-import { FreeChargingItem } from "./FreeChargingItem";
-import { IFreeWifiItem } from "./FreeWifiItem";
+import { FreeChargingItem, IFreeWifiItem } from "tfwc-data";
 
 export interface ShareTextModal {
     text: string;

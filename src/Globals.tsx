@@ -1,14 +1,13 @@
 import { isPlatform, IonLabel } from '@ionic/react';
 import { unzipSync, strFromU8 } from 'fflate';
 import parse from 'csv-parse/lib/sync';
-import { FreeWifiItem } from './models/FreeWifiItem';
-import { FreeChargingItem } from './models/FreeChargingItem';
+import { FreeChargingItem, FreeWifiItem } from 'tfwc-data';
 
 const baseUrl = import.meta.env.BASE_URL || '';
 const pwaUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
 const bugReportApiUrl = 'https://vh6ud1o56g.execute-api.ap-northeast-1.amazonaws.com/bugReportMailer';
-let freeChargingUrl = `https://d23fxcqevt3np7.cloudfront.net/charge_station_list.zip`;
-let freeWifiUrl = `https://d23fxcqevt3np7.cloudfront.net/hotspotlist.zip`;
+let freeChargingUrl = `https://d1dhau3ezqw0u0.cloudfront.net/charge_station_list.zip`;
+let freeWifiUrl = `https://d1dhau3ezqw0u0.cloudfront.net/hotspotlist.zip`;
 
 const tfwcDb = 'tfwcDb';
 const freeChargingDataKey = 'freeCharging';

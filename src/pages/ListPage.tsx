@@ -3,8 +3,7 @@ import { IonContent, IonHeader, IonPage, IonToolbar, withIonLifeCycle, IonButton
 import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { location } from 'ionicons/icons';
-import { FreeChargingItem } from '../models/FreeChargingItem';
-import { FreeWifiItem } from '../models/FreeWifiItem';
+import { FreeChargingItem, FreeWifiItem } from 'tfwc-data';
 import { Settings } from '../models/Settings';
 import { TmpSettings } from '../models/TmpSettings';
 import './ListPage.css';
