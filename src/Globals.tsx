@@ -5,7 +5,7 @@ import { FreeChargingItem, FreeWifiItem } from 'tfwc-data';
 
 const baseUrl = import.meta.env.BASE_URL || '';
 const pwaUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-const bugReportApiUrl = 'https://vh6ud1o56g.execute-api.ap-northeast-1.amazonaws.com/bugReportMailer';
+const bugReportApiUrl = 'https://bug-report.mrmyh.eu.org/bugReportMailer';
 let freeChargingUrl = `https://d1dhau3ezqw0u0.cloudfront.net/charge_station_list.zip`;
 let freeWifiUrl = `https://d1dhau3ezqw0u0.cloudfront.net/hotspotlist.zip`;
 

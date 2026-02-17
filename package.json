@@ -2,7 +2,7 @@
   "name": "tfwc",
   "homepage": "/tfwc",
   "productName": "免費WiFi與充電",
-  "pwaVersion": "2.7.1",
+  "pwaVersion": "2.7.2",
   "version": "2.0.0",
   "license": "MIT",
   "keywords": [
@@ -34,6 +34,7 @@
     "dist-mas-dev": "npm run build-electron-store && electron-builder -m mas-dev -c electronBuilderConfigs/masDev.json"
   },
   "dependencies": {
+    "csv-parse": "^4.16.3",
     "electron-window-state": "^5.0.3"
   },
   "devDependencies": {
